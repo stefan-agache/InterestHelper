@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterestHelper.IDataAccessLayer;
 using Xamarin.Forms;
 
 namespace InterestHelper
 {
     public partial class MainPage : ContentPage
     {
-        private Label roborText;
+        private readonly Label _roborText;
+
         public MainPage()
         {
             InitializeComponent();
@@ -19,17 +21,22 @@ namespace InterestHelper
             };
             button.Clicked += OnButtonClicked;
             
-            roborText = new Label();
+            _roborText = new Label();
             Content = new StackLayout()
             {
                 VerticalOptions = LayoutOptions.Center,
-                Children = {button, roborText}
+                Children = {button, _roborText}
             };
         }
 
-        private void OnButtonClicked(object sender, EventArgs e)
+        private async void OnButtonClicked(object sender, EventArgs e)
         {
-            
+            var provider = InterestHelperIoc.Resolve<IInputDataProvider>();
+            var inputData = await provider.GetRawDataAsync(DateTime.Now.AddDays(-7), DateTime.Now);
+
+            _roborText.Text = inputData.First().Item2;
+            var random = new Random();
+            _roborText.TextColor = Color.FromRgb(random.Next(256), random.Next(256), random.Next(256));
         }
     }
 }

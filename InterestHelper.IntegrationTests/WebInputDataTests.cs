@@ -13,7 +13,7 @@ namespace InterestHelper.IntegrationTests
         public void GetRawData_WhenCalled_DoesntGetsSomething()
         {
             // Arrange
-            var webInputData = new WebInputData();
+            var webInputData = new WebInputDataProvider();
             
             // Act
             var result = Task.Run(() => webInputData.GetRawDataAsync(DateTime.Now.AddDays(-7), DateTime.Now)).Result;

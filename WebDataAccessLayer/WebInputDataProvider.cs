@@ -7,7 +7,7 @@ using InterestHelper.IDataAccessLayer;
 
 namespace InterestHelper.WebDataAccessLayer
 {
-    public class WebInputData : IInputData
+    public class WebInputDataProvider : IInputDataProvider
     {
         public static readonly string Url = $@"http://www.bnr.ro/StatisticsReportHTML.aspx?icid=800&table=642&column=&startDate={DateTime.Now.AddDays(-7):dd-MM-yyyy}&stopDate={DateTime.Now:dd-MM-yyyy}";
 

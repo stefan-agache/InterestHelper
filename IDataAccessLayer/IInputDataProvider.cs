@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterestHelper.IDataAccessLayer
 {
-    public interface IInputData
+    public interface IInputDataProvider
     {
         Task<IEnumerable<Tuple<DateTime, string>>> GetRawDataAsync(DateTime start, DateTime end);
     }

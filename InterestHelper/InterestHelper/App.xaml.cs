@@ -12,6 +12,7 @@ namespace InterestHelper
         public App()
         {
             InitializeComponent();
+            InterestHelperIoc.InitializeIoc();
 
             MainPage = new InterestHelper.MainPage();
         }
